@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Typography, TextField, Stack, Input } from "@mui/material";
+import { Box, Card, CardContent, Typography, TextField, Stack, Input, CardActions, Button } from "@mui/material";
 import InputWithLabel from "../components/InputWithLabel";
 import MySelect from "../components/MySelect";
 import {getCodes, getName} from "country-list";
@@ -42,7 +42,12 @@ const SignUpForm = () => {
 
                         <InputWithLabel
                             title="Date"
-                            inputComponent={<input type="date" />}
+                            inputComponent={
+                                <input
+                                    style={{ height: "60px"}}
+                                    type="date"
+                                />
+                            }
                         />
 
                         <InputWithLabel
@@ -54,8 +59,42 @@ const SignUpForm = () => {
                                 />
                             }
                         />
+
+                        <InputWithLabel
+                            title="Phone"
+                            inputComponent={
+                                <TextField
+                                    variant="outlined"
+                                />
+                            }
+                        />
+
+                        <InputWithLabel
+                            title="Email"
+                            inputComponent={
+                                <TextField
+                                    variant="outlined"
+                                />
+                            }
+                        />
+
                     </Stack>
                 </CardContent>
+                <CardActions>
+                    <Box
+                        width="100%"
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="center"
+                    >
+                        <Button
+                            fullWidth
+                            variant="contained"
+                        >
+                            Sign Up
+                        </Button>
+                    </Box>
+                </CardActions>
             </Card>
         </Box>
     )

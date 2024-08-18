@@ -1,30 +1,34 @@
 import { Stack } from "@mui/material";
 import { Box } from "@mui/system";
-import { useUserInfoStore } from "../stores/userInfoStore";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getUser } from "../crud/user";
 
 const UserInfo = () => {
-    const {
-        name,
-        date,
-        country,
-        phone,
-        email,
-    } = useUserInfoStore();
+    const [name, setName] = useState();
+    const [country, setCountry] = useState();
+    const [date, setDate] = useState();
+    const [email, setEmail] = useState();
+    const [phone, setPhone] = useState();
 
     useEffect(() => {
-        getUser();
+        getUser()
+            .then((data) => {
+                setName(data.name);
+                setCountry(data.country);
+                setDate(data.date);
+                setEmail(data.email);
+                setPhone(data.Phone);
+            });
     }, [])
 
     return (
         <Stack>
             UserInfo
             <Box>{name}</Box>
-            <Box>{date}</Box>
             <Box>{country}</Box>
-            <Box>{phone}</Box>
+            <Box>{date}</Box>
             <Box>{email}</Box>
+            <Box>{phone}</Box>
         </Stack>
     );
 }
